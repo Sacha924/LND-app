@@ -1,11 +1,16 @@
 import React from 'react';
+import UnlockWallet from './Components/UnlockWallet';
+import GetInfo from './Components/GetInfo';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      hello
+    <div>
+      <h1>Lightning Network Dashboard</h1>
+      <UnlockWallet />
+      <GetInfo />
     </div>
   );
-}
+};
 
 export default App;

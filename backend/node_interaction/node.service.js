@@ -12,11 +12,9 @@ const unlockWallet = (req, res) => {
     },
   })
   .then(response => {
-    console.log('Portefeuille déverrouillé:', response.data);
     res.status(200).json(response.data);
   })
   .catch(error => {
-    console.error('Erreur:', error.message);
     res.status(500).json({ message: error.message });
   });
 };
@@ -30,11 +28,9 @@ const getInfo = (req, res) => {
   },
   })
   .then(response => {
-    console.log('Informations sur le réseau:', response.data);
     res.status(200).json(response.data);
   })
   .catch(error => {
-    console.error('Erreur lors de la récupération des informations:', error.message);
     res.status(500).json({ message: error.message });
   });
 };
@@ -47,11 +43,9 @@ const getBalance = (req, res) => {
   },
   })
   .then(response => {
-    console.log('Balance:', response.data);
     res.status(200).json(response.data);
   })
   .catch(error => {
-    console.error('Erreur lors de la récupération des informations:', error.message);
     res.status(500).json({ message: error.message });
   });
 };
