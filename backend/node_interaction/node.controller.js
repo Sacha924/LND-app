@@ -1,12 +1,12 @@
 const nodeRouter = require("express").Router();
+const nodeService = require("./node.service");
 
-// exerciseRouter.get("/", exerciseService.getAllExercises);
+nodeRouter.post("/", nodeService.unlockWallet);
 
-// exerciseRouter.post("/", exerciseService.createExercise);
+nodeRouter.get("/getinfo", nodeService.getInfo);
 
-// exerciseRouter.put("/", exerciseService.updateExercise);
+nodeRouter.get("/getbalance", nodeService.getBalance);
 
-// exerciseRouter.delete("/", exerciseService.deleteExercise);
 
 
 module.exports = nodeRouter;

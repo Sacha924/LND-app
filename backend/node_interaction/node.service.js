@@ -1,5 +1,6 @@
 const { axiosInstance, macaroon, apiUrl } = require('../config');
 
+
 // Fonction pour unlock le wallet
 const unlockWallet = (req, res) => {
   const password = req.body.password;
