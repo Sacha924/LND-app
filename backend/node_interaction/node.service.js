@@ -50,6 +50,65 @@ const getBalance = (req, res) => {
   });
 };
 
+const openChannel = (req, res) => {
+  const { node_pubkey, local_funding_amount, push_sat, private } = req.body;
+  
+  axiosInstance.post(`${apiUrl}/v1/channels`, {
+    node_pubkey_string: node_pubkey,
+    local_funding_amount,
+    push_sat,
+    private
+  }, {
+    headers: {
+      'Grpc-Metadata-macaroon': macaroon,
+    }
+  })
+  .then(response => {
+    res.status(200).json(response.data);
+  })
+  .catch(error => {
+    res.status(500).json({ message: error.message });
+  });
+};
+
+const closeChannel = (req, res) => {
+  const { channel_point, force } = req.body;
+  const [funding_txid, output_index] = channel_point.split(':');
+
+  axiosInstance.delete(`${apiUrl}/v1/channels/${funding_txid}/${output_index}`, {
+    data: { force }
+  }, {
+    headers: {
+      'Grpc-Metadata-macaroon': macaroon,
+    }
+  })
+  .then(response => {
+    res.status(200).json(response.data);
+  })
+  .catch(error => {
+    res.status(500).json({ message: error.message });
+  });
+};
+
+const sendPayment = (req, res) => {
+  const { payment_request } = req.body;
+
+  axiosInstance.post(`${apiUrl}/v1/channels/transactions`, {
+    payment_request
+  }, {
+    headers: {
+      'Grpc-Metadata-macaroon': macaroon,
+    }
+  })
+  .then(response => {
+    res.status(200).json(response.data);
+  })
+  .catch(error => {
+    res.status(500).json({ message: error.message });
+  });
+};
+
+
 module.exports = {
     unlockWallet, 
     getInfo,
