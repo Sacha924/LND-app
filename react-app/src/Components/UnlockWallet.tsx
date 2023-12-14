@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './../style/unlockWallet.css'
 
 const UnlockWallet = () => {
     const [password, setPassword] = useState('');
@@ -14,23 +15,27 @@ const UnlockWallet = () => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
-            // const responseData = await response.json();
-            // console.log('Portefeuille déverrouillé:', responseData);
+            else{
+                window.location.href = "/Home";
+            }
         } catch (error) {
             console.error('Erreur:', (error as Error).message);
         }
     };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="password" 
-        value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
-        placeholder="Enter wallet password"
-      />
-      <button type="submit">Unlock Wallet</button>
-    </form>
+    return (
+      <div className="unlock-container">
+          <form className="unlock-form" onSubmit={handleSubmit}>
+              <h1>Unlock Your Wallet</h1>
+              <input 
+                  type="password" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  placeholder="Enter wallet password"
+              />
+              <button type="submit">Unlock Wallet</button>
+          </form>
+      </div>
   );
 };
 
