@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './../style/unlockWallet.css'
+import './../style/UnlockWallet.css'
 
 const UnlockWallet = () => {
     const [password, setPassword] = useState('');

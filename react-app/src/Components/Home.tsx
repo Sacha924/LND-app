@@ -1,16 +1,13 @@
-
 import React from 'react';
-import Layout from './Layout';
 
-const Home: React.FC = () => {
+const Home = () => {
     return (            
-    <div>
-        <Layout/>
         <div>
-            <h1>Welcome to the Home Page!</h1>
-            <p>This is the home page content after login.</p>
+            <div>
+                <h1>Welcome to the Home Page!</h1>
+                <p>This is the home page content after login.</p>
+            </div>
         </div>
-    </div>
     );
 };
 
