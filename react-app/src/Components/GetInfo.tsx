@@ -16,6 +16,8 @@ const GetInfo = () => {
 
   return (
     <div>
+      <p> Renvoie des informations générales concernant le nœud Lightning, y compris son identité pubkey, alias, les chaînes auxquelles 
+        il est connecté et des informations concernant le nombre de canaux ouverts et en attente</p>
         <button onClick={fetchInfo}>Get Info</button>
       {info && <pre>{JSON.stringify(info, null, 2)}</pre>}
     </div>
