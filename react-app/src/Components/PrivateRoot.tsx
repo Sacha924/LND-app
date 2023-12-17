@@ -6,6 +6,7 @@ const PrivateRoot: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const auth = useAuth();
 
   if (!auth || !auth.isAuthenticated) {
+    console.log("here in private", auth?.isAuthenticated)
     return <Navigate to="/" />;
   }
 

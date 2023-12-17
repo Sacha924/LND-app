@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './../style/UnlockWallet.css'
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const UnlockWallet = () => {
     const [password, setPassword] = useState('');
+    const auth = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log("here in unlock", auth?.isAuthenticated)
+
+        if (auth?.isAuthenticated) {
+            navigate("/Home");
+        }
+      }, [auth?.isAuthenticated]); 
+
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
+        console.log("called handle submit")
         event.preventDefault();
         try {
             const response = await fetch('http://localhost:4000/node/unlockWallet', {
@@ -16,7 +30,7 @@ const UnlockWallet = () => {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             else{
-                window.location.href = "/Home";
+                auth?.login();
             }
         } catch (error) {
             console.error('Erreur:', (error as Error).message);
