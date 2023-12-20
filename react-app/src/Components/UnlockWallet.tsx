@@ -9,8 +9,6 @@ const UnlockWallet = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("here in unlock", auth?.isAuthenticated)
-
         if (auth?.isAuthenticated) {
             navigate("/Home");
         }
@@ -18,7 +16,6 @@ const UnlockWallet = () => {
 
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
-        console.log("called handle submit")
         event.preventDefault();
         try {
             const response = await fetch('http://localhost:4000/node/unlockWallet', {

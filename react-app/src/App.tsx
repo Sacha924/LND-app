@@ -7,6 +7,7 @@ import GetBalance from './Components/GetBalance';
 import UnlockWallet from './Components/UnlockWallet';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoot from './Components/PrivateRoot';
+import { Channels } from './Components/Channels';
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
             } />
             <Route path="/Balance" element={
               <PrivateRoot><GetBalance /></PrivateRoot>
+            } />
+            <Route path="/Channels" element={
+              <PrivateRoot><Channels /></PrivateRoot>
             } />
           </Route>
         </Routes>
