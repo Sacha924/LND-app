@@ -7,6 +7,8 @@ nodeRouter.get("/getInfo", nodeService.getInfo);
 
 nodeRouter.get("/getBalance", nodeService.getBalance);
 
+nodeRouter.get("/getChannels", nodeService.getChannels);
 
+nodeRouter.post("/openChannel", nodeService.openChannel);
 
 module.exports = nodeRouter;

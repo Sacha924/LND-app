@@ -50,6 +50,20 @@ const getBalance = (req, res) => {
   });
 };
 
+const getChannels = (req, res) => {
+  axiosInstance.get(`${apiUrl}/v1/channels`, {
+  headers: {
+    'Grpc-Metadata-macaroon': macaroon,
+  },
+  })
+  .then(response => {
+    res.status(200).json(response.data);
+  })
+  .catch(error => {
+    res.status(500).json({ message: error.message });
+  });
+};
+
 const openChannel = (req, res) => {
   const { node_pubkey, local_funding_amount, push_sat, private } = req.body;
   
@@ -64,9 +78,11 @@ const openChannel = (req, res) => {
     }
   })
   .then(response => {
+    console.log("res",response);
     res.status(200).json(response.data);
   })
   .catch(error => {
+    console.log("err",error);
     res.status(500).json({ message: error.message });
   });
 };
@@ -112,5 +128,8 @@ const sendPayment = (req, res) => {
 module.exports = {
     unlockWallet, 
     getInfo,
-    getBalance
+    getBalance,
+    getChannels,
+    openChannel,
+    closeChannel
 }
