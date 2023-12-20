@@ -11,4 +11,9 @@ nodeRouter.get("/getChannels", nodeService.getChannels);
 
 nodeRouter.post("/openChannel", nodeService.openChannel);
 
+nodeRouter.post("/sendPayment", nodeService.sendPayment);
+
+nodeRouter.post("/createInvoice", nodeService.createInvoice);
+
+
 module.exports = nodeRouter;

@@ -1,3 +1,24 @@
+Note : faire tout le développement en regtest. Et ensuite une fois le développement fini remplacé le config js par ça :
+const fs = require('fs');
+const axios = require('axios');
+const https = require('https');
+
+const tlsCert = fs.readFileSync('./tls.cert');
+const macaroon = fs.readFileSync('./admin.macaroon').toString('hex');   // auth
+const apiUrl = 'https://localhost:8080';
+
+// instance axios pour requêtes HTTPS (d'où la nécéssité du certif TLS)
+const axiosInstance = axios.create({
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+    ca: tlsCert,
+  }),
+});
+
+module.exports = { axiosInstance, macaroon, apiUrl };
+
+
+
 Problèmes rencontrés :
 Pour ouvrir un channel il me faut un autre noeud avec lequel communiqué.
 
@@ -25,3 +46,21 @@ mais je me suis rendu compte que ma grosse erreur était d'avoir laissé :
 const apiUrl = 'https://localhost:8080';
 
 Je l'ai ensuite remplacé par: const apiUrl = 'https://localhost:8080'; qui est l'hôte REST associé à Alice. En effet, si on souhaite utiliser les nœuds LND sur Polar, on doit également faire nos appels API à ces nœuds spécifiques, et non à un nœud LND local. Chaque nœud dans Polar a sa propre API, accessible via un port spécifique attribué par Polar.
+
+
+
+## Comment utiliser l'app
+
+- avoir bitcoind et lnd d'installer
+
+- copier dans backend votre certificat tls ainsi que votre macaroon path
+
+
+<img src ="Node_before_alice_carol_canal.JPG">
+<img src="alice_open_canal_carol.JPG">
+<img src ="Node_after_alice_carol_canal.JPG">
+
+
+
+
+Partie invoice et payement. Pour tester la fonctionnalité de créer un invoice, on peut utiliser mon application. mais vous ne pourrez pas payez vous même l'invoice ... Pourquoi ? Parce qu'on ne peut pas payer un invoice pour soit-même. Donc ce que j'ai fait pour teste c'est que j'ai créé un invoice depuis Polar, depuis le compte de Bob, demandant 50000sat à Alice. J'ai copié le payement_request dans mon form pour sendpayment, et j'ai pu envoyé le payement à partir de l'invoice

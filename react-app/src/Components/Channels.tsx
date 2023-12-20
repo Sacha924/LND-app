@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import SendPayment from './SendPayment';
+import CreateInvoice from './CreateInvoice';
 
 export const Channels = () => {
     const [channels, setChannels] = useState(null);
@@ -43,6 +45,12 @@ export const Channels = () => {
   
   return (
     <div>
+      <CreateInvoice />
+      <SendPayment />
+
+      <h2>Open a Channel</h2>
+
+
       <form onSubmit={(e) => {
         e.preventDefault();
         openChannel();

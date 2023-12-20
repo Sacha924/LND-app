@@ -124,6 +124,26 @@ const sendPayment = (req, res) => {
   });
 };
 
+const createInvoice = (req, res) => {
+  const { memo, value, expiry } = req.body;
+  
+  axiosInstance.post(`${apiUrl}/v1/invoices`, {
+    memo,
+    value,
+    expiry
+  }, {
+    headers: {
+      'Grpc-Metadata-macaroon': macaroon,
+    }
+  })
+  .then(response => {
+    res.status(200).json(response.data);
+  })
+  .catch(error => {
+    res.status(500).json({ message: error.message });
+  });
+};
+
 
 module.exports = {
     unlockWallet, 
@@ -131,5 +151,7 @@ module.exports = {
     getBalance,
     getChannels,
     openChannel,
-    closeChannel
+    closeChannel,
+    sendPayment,
+    createInvoice
 }
