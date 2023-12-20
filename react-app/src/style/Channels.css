@@ -1,0 +1,47 @@
+.channels-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.channels-forms-components {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.channels-forms-components > div {
+    flex: 1; 
+    margin: 0 10px 30px 10px; 
+}
+
+.channels-form input, .channels-form label {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.channels-form input[type="checkbox"] {
+    margin-top: 0;
+}
+
+.channels-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #17a2b8;
+    color: white;
+    cursor: pointer;
+}
+
+.channels-form button:hover {
+    background-color: #138496;
+}
+
+.channel-details {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

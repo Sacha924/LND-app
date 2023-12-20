@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./../style/SendPayment.css";
 
 const SendPayment = () => {
     const [paymentRequest, setPaymentRequest] = useState('');
@@ -22,16 +23,17 @@ const SendPayment = () => {
     };
 
     return (
-        <div>
+        <div className='send-payment-container'>
             <h2>Envoyer un Paiement</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="send-payment-form">
                 <input 
                     type="text" 
+                    className="send-payment-input"
                     value={paymentRequest} 
                     onChange={(e) => setPaymentRequest(e.target.value)} 
                     placeholder="Entrez la requête de paiement"
                 />
-                <button type="submit">Envoyer le Paiement</button>
+                <button type="submit" className="send-payment-button">Envoyer le Paiement</button>
             </form>
         </div>
     );

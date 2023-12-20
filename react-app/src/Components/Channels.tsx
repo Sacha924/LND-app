@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SendPayment from './SendPayment';
 import CreateInvoice from './CreateInvoice';
+import "./../style/Channels.css";
 
 export const Channels = () => {
     const [channels, setChannels] = useState(null);
@@ -44,25 +45,23 @@ export const Channels = () => {
   };
   
   return (
-    <div>
-      <CreateInvoice />
-      <SendPayment />
-
+    <div className="channels-container">
+      <div className="channels-forms-components">
+        <CreateInvoice />
+        <SendPayment />
+      </div>
       <h2>Open a Channel</h2>
-
-
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        openChannel();
-      }}>
-        <input 
+      <form onSubmit={(e) => { /*...*/ }} className="channels-form">
+          <input 
           type="text"
+          className="channels-input"
           value={nodePubKey}
           onChange={(e) => setNodePubKey(e.target.value)}
           placeholder="Node Public Key"
         />
         <input 
           type="number"
+          className="channels-input"
           min={20000}
           value={localFundingAmount}
           onChange={(e) => setLocalFundingAmount(e.target.value)}
@@ -70,6 +69,7 @@ export const Channels = () => {
         />
         <input 
           type="number"
+          className="channels-input"
           value={pushSat}
           onChange={(e) => setPushSat(e.target.value)}
           placeholder="Push Satoshis"
@@ -78,11 +78,12 @@ export const Channels = () => {
           Private Channel:
           <input 
             type="checkbox"
+            className="channels-input"
             checked={isPrivate}
             onChange={(e) => setIsPrivate(e.target.checked)}
           />
         </label>
-        <button type="submit">Open Channel</button>
+        <button type="submit" className="channels-button">Open Channel</button>
       </form>
       {channels !== null ? (
         <>

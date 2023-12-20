@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./../style/CreateInvoice.css";
 
 const CreateInvoice = () => {
     const [memo, setMemo] = useState('');
@@ -28,28 +29,31 @@ const CreateInvoice = () => {
     };
 
     return (
-        <div>
+        <div className="create-invoice-container">
             <h2>Create Invoice</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="create-invoice-form">
                 <input 
                     type="text" 
+                    className="create-invoice-input"
                     value={memo} 
                     onChange={(e) => setMemo(e.target.value)} 
                     placeholder="Description"
                 />
                 <input 
                     type="text" 
+                    className="create-invoice-input"
                     value={amount} 
                     onChange={(e) => setAmount(e.target.value)} 
                     placeholder="Montant en satoshis"
                 />
                 <input 
                     type="text" 
+                    className="create-invoice-input"
                     value={expiry} 
                     onChange={(e) => setExpiry(e.target.value)} 
                     placeholder="Durée de validité en secondes"
                 />
-                <button type="submit">Créer la Facture</button>
+                <button type="submit" className="create-invoice-button">Créer la Facture</button>
             </form>
         </div>
     );
