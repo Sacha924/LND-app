@@ -19,9 +19,19 @@ const axiosInstance = axios.create({
 
 module.exports = { axiosInstance, macaroon, apiUrl };
 
+## Le site 
+
+Quand vous arrivez sur le site, il faut que bitcoind et lnd tourne sur votre ordinateur, et il faut que vous n'ayez pas encore dévérouillé votre wallet.
+
+La première étape va être de dévérouiller votre wallet. Une fois que vous rentrez votre mot de passe vous serez rediriger sur la page d'accueil.
+
+<img src="Accueil.JPG">
+
+ensuite, vous pouvez accéder en cliquand sur le menu à la partie dashboard, où vous pouvez retrouver différentes informations sur votre noeud, votre balance et vos channels.
 
 
-Problèmes rencontrés :
+## Problèmes rencontrés
+
 Pour ouvrir un channel il me faut un autre noeud avec lequel communiqué.
 
 C'est pour ca que j'ai voulu utilisé Polar, mais j'ai rencontré un problème, on peut lire dans la FAQ de polar:

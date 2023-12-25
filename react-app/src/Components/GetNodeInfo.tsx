@@ -30,7 +30,6 @@ const GetNodeInfo = () => {
       console.error('Erreur:', (error as Error).message);
     }
   };
-  console.log(info)
 
   useEffect(() => {
     fetchInfo();

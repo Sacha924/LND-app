@@ -7,9 +7,11 @@ import './../style/Dashboard.css'
 export default function Dashboard() {
   return (
     <div className="dashboard">
-            <GetNodeInfo />
-            <GetBalance />
-            <GetChannelInfo />
-        </div>
-  )
+      <div className="node-balance-container">
+        <GetNodeInfo />
+        <GetBalance />
+      </div>
+      <GetChannelInfo />
+    </div>
+  );
 }
