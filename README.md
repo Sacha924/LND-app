@@ -25,21 +25,21 @@ Quand vous arrivez sur le site, il faut que bitcoind et lnd tourne sur votre ord
 
 La première étape va être de dévérouiller votre wallet. Une fois que vous rentrez votre mot de passe vous serez rediriger sur la page d'accueil.
 
-<img src="Accueil.JPG">
+<img src="img/Accueil.JPG">
 
 Ensuite, vous pouvez accéder en cliquant sur le menu à la partie dashboard, où vous pouvez retrouver différentes informations sur votre noeud, votre balance et vos channels.
 
-<img src="Dashboard.JPG">
+<img src="img/Dashboard.JPG">
 
 Enfin vous avez une partie où vous pouvez ouvrir et fermer des channels, ainsi que créer des invoice et envoyer des payements.
 
 Exemple de la fonctionnalité d'ouverture de channel :
 
-<img src="PolarBefore.JPG">
+<img src="img/PolarBefore.JPG">
 
-<img src="OpenAChannel.JPG">
+<img src="img/OpenAChannel.JPG">
 
-<img src="PolarAfter.JPG">
+<img src="img/PolarAfter.JPG">
 
 A noté que je présente une des fonctionnalités en étant sur regtest, mais qu'à l'heure où vous lisez ceci l'application ne fonctionne pas sur regtest mais signet.
 
