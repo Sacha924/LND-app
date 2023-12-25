@@ -1,20 +1,23 @@
-## Le site 
+## How to use the site
 
-REMARQUE L UTILISATEUR DOIT AVOIR CONFIGURER SON BITCOIN CONF ET LND CONF AFIN DE FONCTIONNER SUR SIGNET
+As a user, you must first have bitcoind and lnd installed on your machine, and have configured them to run on signet.
 
-Quand vous arrivez sur le site, il faut que bitcoind et lnd tourne sur votre ordinateur, et il faut que vous n'ayez pas encore dévérouillé votre wallet.
+you must also use port 8080 to expose the Lightning Network Daemon API (this is normally the default port).
 
-La première étape va être de dévérouiller votre wallet. Une fois que vous rentrez votre mot de passe vous serez rediriger sur la page d'accueil.
+
+When you arrive on the site, bitcoind and lnd must be running on your computer, and you must not have unlocked your wallet for now.
+
+The first step is to unlock your wallet from the application by entering your wallet password. Once you've entered your password, you'll be redirected to the home page.
 
 <img src="img/Accueil.JPG">
 
-Ensuite, vous pouvez accéder en cliquant sur le menu à la partie dashboard, où vous pouvez retrouver différentes informations sur votre noeud, votre balance et vos channels.
+Then, by clicking on the menu, you can access the dashboard section, where you can find various information about your node, your balance and your channels.
 
 <img src="img/Dashboard.JPG">
 
-Enfin vous avez une partie où vous pouvez ouvrir et fermer des channels, ainsi que créer des invoice et envoyer des payements.
+Finally, there's a section where you can open and close channels, as well as create invoices and send payments.
 
-Exemple de la fonctionnalité d'ouverture de channel :
+Example of the channel opening functionality:
 
 <img src="img/PolarBefore.JPG">
 
@@ -22,59 +25,53 @@ Exemple de la fonctionnalité d'ouverture de channel :
 
 <img src="img/PolarAfter.JPG">
 
-A noté que je présente une des fonctionnalités en étant sur regtest, mais qu'à l'heure où vous lisez ceci l'application ne fonctionne pas sur regtest mais signet.
+Note that I'm presenting one of the features on regtest, but at the time you're reading this the application isn't running on regtest but signet.
 
-Passage de regtest à signet :
+Switching from regtest to signet :
 
-l'application lit dans mes fichier mon certifcat tls ainsi que mon admin.macaroon, ensuite j'ai rentré mon mot de passe et ait pu dévérouiller mon wallet et accéder à l'appli :
+the app reads my tls certifcat and my admin.macaroon in my files, then I entered my password and was able to unlock my wallet and access the app:
 
 <img src="img/DashboardSignet.JPG">
 
 
 
-## Problèmes rencontrés
+## Problems encountered
 
-Pour ouvrir un channel il me faut un autre noeud avec lequel communiqué.
 
-C'est pour ca que j'ai voulu utilisé Polar, mais j'ai rencontré un problème, on peut lire dans la FAQ de polar:
+To open a channel, I need another node to communicate with.
+
+
+That's why I wanted to use Polar, but I encountered a problem, you can read in the polar FAQ:
 `
 Can I use it on mainnet or testnet?
 Unfortunately, Polar was built to improve the experience of developers building applications for Lightning and Bitcoin. To obtain the immediate feedback loop necessary to be productive, you'll need to be able to mine blocks as fast as possible. Waiting 10 minutes for your channel to open just won't cut it.
 `
 
-En gros, je suis obligé d'utilisé le réseau regtest.
-Je passe donc mon réseau en regtest mais j'ai compris la chose suivante :
-le réseau Regtest utilisé par mon groupe de nœuds dans Polar et mon Regtest local ne sont pas les mêmes réseaux. Chaque instance de Regtest fonctionne de manière isolée, ce qui signifie que les blocs minés dans un environnement Regtest ne seront pas visibles dans un autre et que ces environnements n'interagissent pas entre eux.
+
+Basically, I'm forced to use the regtest network.
+So I'm switching my network to regtest, but I've realized the following:
+the Regtest network used by my group of nodes in Polar and my local Regtest are not the same network. Each Regtest instance works in isolation, which means that blocks mined in one Regtest environment won't be visible in another, and these environments don't interact with each other.
 
 
-Donc je me suis dit que j'allais copié collé non pas mon cert.tls et mon admin.macaroonn, mais celui d'alice. Cependant en voulant interagir avec Bob en passant par l'API LND, j'ai obtenu une erreur :
+So I thought I'd copy and paste not my cert.tls and admin.macaroonn, but alice's. However, when I tried to interact with Bob using the LND API, I got an error:
 {
   "message": "self-signed certificate"
 }
 
-j'ai rajouté cette ligne dans la création de mon instance axios :
+
+I added this line in the creation of my axios instance:
 rejectUnauthorized: false,
 
-mais je me suis rendu compte que ma grosse erreur était d'avoir laissé :
+
+but I realized that my big mistake was to have left :
+
 
 const apiUrl = 'https://localhost:8080';
 
-Je l'ai ensuite remplacé par: const apiUrl = 'https://localhost:8080'; qui est l'hôte REST associé à Alice. En effet, si on souhaite utiliser les nœuds LND sur Polar, on doit également faire nos appels API à ces nœuds spécifiques, et non à un nœud LND local. Chaque nœud dans Polar a sa propre API, accessible via un port spécifique attribué par Polar.
+
+I then replaced it with: const apiUrl = 'https://127.0.0.1:8082'; which is the REST host associated with Alice. This is because, if we want to use LND nodes on Polar, we also need to make our API calls to these specific nodes, not to a local LND node. Each node in Polar has its own API, accessible via a specific port assigned by Polar.
+
+NB : after the development part, i switch again on https://localhost:8080
 
 
-
-## Comment utiliser l'app
-
-- avoir bitcoind et lnd d'installer
-
-- copier dans backend votre certificat tls ainsi que votre macaroon path
-
-
-<img src ="Node_before_alice_carol_canal.JPG">
-<img src="alice_open_canal_carol.JPG">
-<img src ="Node_after_alice_carol_canal.JPG">
-
-
-
-
-Partie invoice et payement. Pour tester la fonctionnalité de créer un invoice, on peut utiliser mon application. mais vous ne pourrez pas payez vous même l'invoice ... Pourquoi ? Parce qu'on ne peut pas payer un invoice pour soit-même. Donc ce que j'ai fait pour teste c'est que j'ai créé un invoice depuis Polar, depuis le compte de Bob, demandant 50000sat à Alice. J'ai copié le payement_request dans mon form pour sendpayment, et j'ai pu envoyé le payement à partir de l'invoice
+Invoice and payment part. To test the functionality of creating an invoice, you can use my application. But you won't be able to pay the invoice yourself... Why not? Because you can't pay an invoice for yourself. So what I did was to create an invoice from Polar, from Bob's account, requesting 50000sat from Alice. I copied the payement_request into my form for sendpayment, and was able to send the payment from the invoice and check that it worked on regtest.
