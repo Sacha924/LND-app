@@ -35,9 +35,11 @@ const GetBalance: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="balances">
+
       {balance !== null ? (
         <>
+            <h2>Balances</h2>
             <p>Total balance : {balance.total_balance}</p>
             <p>Confirmed balance {balance.confirmed_balance}</p>
             <p>Unconfirmed balance {balance.unconfirmed_balance}</p>

@@ -1,0 +1,20 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+    background-color: #222; 
+}
+
+.node-information, .balances, .channels {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #4caf50;
+}
+
+
