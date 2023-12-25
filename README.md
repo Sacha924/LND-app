@@ -27,7 +27,21 @@ La première étape va être de dévérouiller votre wallet. Une fois que vous r
 
 <img src="Accueil.JPG">
 
-ensuite, vous pouvez accéder en cliquand sur le menu à la partie dashboard, où vous pouvez retrouver différentes informations sur votre noeud, votre balance et vos channels.
+Ensuite, vous pouvez accéder en cliquant sur le menu à la partie dashboard, où vous pouvez retrouver différentes informations sur votre noeud, votre balance et vos channels.
+
+<img src="Dashboard.JPG">
+
+Enfin vous avez une partie où vous pouvez ouvrir et fermer des channels, ainsi que créer des invoice et envoyer des payements.
+
+Exemple de la fonctionnalité d'ouverture de channel :
+
+<img src="PolarBefore.JPG">
+
+<img src="OpenAChannel.JPG">
+
+<img src="PolarAfter.JPG">
+
+A noté que je présente une des fonctionnalités en étant sur regtest, mais qu'à l'heure où vous lisez ceci l'application ne fonctionne pas sur regtest mais signet.
 
 
 ## Problèmes rencontrés
