@@ -37,52 +37,54 @@ export default function Channels() {
         <SendPayment />
         <CloseChannel />
       </div>
-      <h2>Open a Channel</h2>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        openChannel();
-      }} className="channels-form">
-          <input 
-          type="text"
-          className="channels-input"
-          value={nodePubKey}
-          onChange={(e) => setNodePubKey(e.target.value)}
-          placeholder="Node Public Key"
-        />
-        <input 
-          type="number"
-          className="channels-input"
-          min={20000}
-          value={localFundingAmount}
-          onChange={(e) => setLocalFundingAmount(e.target.value)}
-          placeholder="Local Funding Amount"
-        />
-        <input 
-          type="number"
-          className="channels-input"
-          value={pushSat}
-          onChange={(e) => setPushSat(e.target.value)}
-          placeholder="Push Satoshis"
-        />
-        <label>
-          Private Channel:
-          <input 
-            type="checkbox"
+      <div className="open-chann">
+        <h2>Open a Channel</h2>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          openChannel();
+        }} className="channels-form">
+            <input 
+            type="text"
             className="channels-input"
-            checked={isPrivate}
-            onChange={(e) => setIsPrivate(e.target.checked)}
+            value={nodePubKey}
+            onChange={(e) => setNodePubKey(e.target.value)}
+            placeholder="Node Public Key"
           />
-        </label>
-        <button type="submit" className="channels-button">Open Channel</button>
-      </form>
-      {channels !== null ? (
-        <>
-          <p>Open channels that you participate in:</p>
-          <pre>{JSON.stringify(channels, null, 2)}</pre>
-        </>
-      ) : (
-        <p>Loading channels...</p>
-      )}
+          <input 
+            type="number"
+            className="channels-input"
+            min={20000}
+            value={localFundingAmount}
+            onChange={(e) => setLocalFundingAmount(e.target.value)}
+            placeholder="Local Funding Amount"
+          />
+          <input 
+            type="number"
+            className="channels-input"
+            value={pushSat}
+            onChange={(e) => setPushSat(e.target.value)}
+            placeholder="Push Satoshis"
+          />
+          <label>
+            Private Channel:
+            <input 
+              type="checkbox"
+              className="channels-input"
+              checked={isPrivate}
+              onChange={(e) => setIsPrivate(e.target.checked)}
+            />
+          </label>
+          <button type="submit" className="channels-button">Open Channel</button>
+        </form>
+        {channels !== null ? (
+          <>
+            <p>Open channels that you participate in:</p>
+            <pre>{JSON.stringify(channels, null, 2)}</pre>
+          </>
+        ) : (
+          <p>Loading channels...</p>
+        )}
+      </div>
     </div>
   );
 };

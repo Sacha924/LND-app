@@ -1,8 +1,5 @@
 .channels-container {
     margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
 }
 .channels-forms-components {
     display: flex;
@@ -51,6 +48,10 @@ label {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+}
+
+.open-chann{
+    margin: 50px 20px 20px 20px;
 }
 
 input[type="text"], input[type="number"] {
