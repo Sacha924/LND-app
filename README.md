@@ -21,6 +21,8 @@ module.exports = { axiosInstance, macaroon, apiUrl };
 
 ## Le site 
 
+REMARQUE L UTILISATEUR DOIT AVOIR CONFIGURER SON BITCOIN CONF ET LND CONF AFIN DE FONCTIONNER SUR SIGNET
+
 Quand vous arrivez sur le site, il faut que bitcoind et lnd tourne sur votre ordinateur, et il faut que vous n'ayez pas encore dévérouillé votre wallet.
 
 La première étape va être de dévérouiller votre wallet. Une fois que vous rentrez votre mot de passe vous serez rediriger sur la page d'accueil.
@@ -42,6 +44,13 @@ Exemple de la fonctionnalité d'ouverture de channel :
 <img src="img/PolarAfter.JPG">
 
 A noté que je présente une des fonctionnalités en étant sur regtest, mais qu'à l'heure où vous lisez ceci l'application ne fonctionne pas sur regtest mais signet.
+
+Passage de regtest à signet :
+
+l'application lit dans mes fichier mon certifcat tls ainsi que mon admin.macaroon, ensuite j'ai rentré mon mot de passe et ait pu dévérouiller mon wallet et accéder à l'appli :
+
+<img src="img/DashboardSignet.JPG">
+
 
 
 ## Problèmes rencontrés
