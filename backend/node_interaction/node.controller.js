@@ -15,5 +15,6 @@ nodeRouter.post("/sendPayment", nodeService.sendPayment);
 
 nodeRouter.post("/createInvoice", nodeService.createInvoice);
 
+nodeRouter.post("/closeChannel", nodeService.closeChannel);
 
 module.exports = nodeRouter;
