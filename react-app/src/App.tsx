@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './Components/Layout';
-import Home from './Components/Home';
-import GetInfo from './Components/GetInfo';
-import GetBalance from './Components/GetBalance';
+import Home from './pages/Home';
 import UnlockWallet from './Components/UnlockWallet';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoot from './Components/PrivateRoot';
-import { Channels } from './Components/Channels';
+import  Channels from './pages/Channels';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
@@ -19,11 +18,8 @@ const App = () => {
             <Route path="/Home" element={
               <PrivateRoot><Home /></PrivateRoot>
             } />
-            <Route path="/GetInfo" element={
-              <PrivateRoot><GetInfo /></PrivateRoot>
-            } />
-            <Route path="/Balance" element={
-              <PrivateRoot><GetBalance /></PrivateRoot>
+            <Route path="/Dashboard" element={
+              <PrivateRoot><Dashboard /></PrivateRoot>
             } />
             <Route path="/Channels" element={
               <PrivateRoot><Channels /></PrivateRoot>

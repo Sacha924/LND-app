@@ -1,4 +1,6 @@
-Note : faire tout le développement en regtest. Et ensuite une fois le développement fini remplacé le config js par ça :
+Note : FAIRE UNE LECTURE AUTO DES FICHIERS MACAROON ET TLS.cert du user
+SI NON TROUVE DEMANDE A L UTILISATEUR SOIT DE DL LND, SOIT DE DRAG AND DROP CES FICHIERS s'il les a déplacé
+faire tout le développement en regtest. Et ensuite une fois le développement fini remplacé le config js par ça :
 const fs = require('fs');
 const axios = require('axios');
 const https = require('https');

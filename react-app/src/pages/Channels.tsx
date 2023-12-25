@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import SendPayment from './SendPayment';
-import CreateInvoice from './CreateInvoice';
+import SendPayment from './../Components/SendPayment';
+import CreateInvoice from './../Components/CreateInvoice';
 import "./../style/Channels.css";
+import CloseChannel from './../Components/CloseChannel';
 
-export const Channels = () => {
+export default function Channels() {
     const [channels, setChannels] = useState(null);
     const [nodePubKey, setNodePubKey] = useState('');
     const [localFundingAmount, setLocalFundingAmount] = useState('');
     const [pushSat, setPushSat] = useState('');
     const [isPrivate, setIsPrivate] = useState(false);
-
-    const fetchChannel = async () => {
-        try {
-          const response = await fetch('http://localhost:4000/node/getChannels');
-          const data = await response.json();
-          setChannels(data);
-        } catch (error) {
-          console.error('Error fetching balance:', error);
-        }
-    };
-
-    useEffect(() => {
-      fetchChannel();
-    }, []);
 
     const openChannel = async () => {
     try {
@@ -38,7 +25,6 @@ export const Channels = () => {
       });
       const data = await response.json();
       console.log('Channel opened:', data);
-      fetchChannel();
     } catch (error) {
       console.error('Error opening channel:', error);
     }
@@ -49,9 +35,13 @@ export const Channels = () => {
       <div className="channels-forms-components">
         <CreateInvoice />
         <SendPayment />
+        <CloseChannel />
       </div>
       <h2>Open a Channel</h2>
-      <form onSubmit={(e) => { /*...*/ }} className="channels-form">
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        openChannel();
+      }} className="channels-form">
           <input 
           type="text"
           className="channels-input"

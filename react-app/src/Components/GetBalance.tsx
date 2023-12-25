@@ -38,8 +38,11 @@ const GetBalance: React.FC = () => {
     <div>
       {balance !== null ? (
         <>
-          <p>Balance:</p>
-          <pre>{JSON.stringify(balance, null, 2)}</pre>
+            <p>Total balance : {balance.total_balance}</p>
+            <p>Confirmed balance {balance.confirmed_balance}</p>
+            <p>Unconfirmed balance {balance.unconfirmed_balance}</p>
+            <p>Locked balance {balance.locked_balance}</p>
+            <p>Reserved balance anchor chan {balance.reserved_balance_anchor_chan}</p>
         </>
       ) : (
         <p>Loading balance...</p>

@@ -1,0 +1,36 @@
+.close-channel-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.close-channel-form input, .close-channel-form label {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.close-channel-form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-channel-form input[type="checkbox"] {
+    margin-top: 0;
+}
+
+.close-channel-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+}
+
+.close-channel-form button:hover {
+    background-color: #c82333;
+}
