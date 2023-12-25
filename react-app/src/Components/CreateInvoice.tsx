@@ -5,6 +5,8 @@ const CreateInvoice = () => {
     const [memo, setMemo] = useState('');
     const [amount, setAmount] = useState('');
     const [expiry, setExpiry] = useState('');
+    const [paymentRequest, setPaymentRequest] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -23,8 +25,10 @@ const CreateInvoice = () => {
                 throw new Error(responseData.message || 'Erreur lors de la création de la facture.');
             }
             console.log('Facture créée avec succès:', responseData);
+            setPaymentRequest(responseData.payment_request);
         } catch (error) {
             console.error('Erreur:', (error as any).message);
+            setError((error as any).message);
         }
     };
 
@@ -40,20 +44,36 @@ const CreateInvoice = () => {
                     placeholder="Description"
                 />
                 <input 
-                    type="text" 
+                    type="number" 
                     className="create-invoice-input"
                     value={amount} 
                     onChange={(e) => setAmount(e.target.value)} 
                     placeholder="Montant en satoshis"
                 />
                 <input 
-                    type="text" 
+                    type="number" 
                     className="create-invoice-input"
                     value={expiry} 
                     onChange={(e) => setExpiry(e.target.value)} 
                     placeholder="Durée de validité en secondes"
                 />
                 <button type="submit" className="create-invoice-button">Créer la Facture</button>
+                {
+                    paymentRequest && (
+                        <div className="create-invoice-payment-request">
+                            <p>Payment Request: (longer than what is displayed)</p>
+                            <p>{paymentRequest}</p>
+                        </div>
+                    )
+                }
+                {
+                    error && (
+                        <div className="create-invoice-error">
+                            <p>Erreur:</p>
+                            <p>{error}</p>
+                        </div>
+                    )
+                }
             </form>
         </div>
     );

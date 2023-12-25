@@ -1,24 +1,3 @@
-Note : FAIRE UNE LECTURE AUTO DES FICHIERS MACAROON ET TLS.cert du user
-SI NON TROUVE DEMANDE A L UTILISATEUR SOIT DE DL LND, SOIT DE DRAG AND DROP CES FICHIERS s'il les a déplacé
-faire tout le développement en regtest. Et ensuite une fois le développement fini remplacé le config js par ça :
-const fs = require('fs');
-const axios = require('axios');
-const https = require('https');
-
-const tlsCert = fs.readFileSync('./tls.cert');
-const macaroon = fs.readFileSync('./admin.macaroon').toString('hex');   // auth
-const apiUrl = 'https://localhost:8080';
-
-// instance axios pour requêtes HTTPS (d'où la nécéssité du certif TLS)
-const axiosInstance = axios.create({
-  httpsAgent: new https.Agent({
-    rejectUnauthorized: false,
-    ca: tlsCert,
-  }),
-});
-
-module.exports = { axiosInstance, macaroon, apiUrl };
-
 ## Le site 
 
 REMARQUE L UTILISATEUR DOIT AVOIR CONFIGURER SON BITCOIN CONF ET LND CONF AFIN DE FONCTIONNER SUR SIGNET

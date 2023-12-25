@@ -26,3 +26,12 @@
 .create-invoice-form button:hover {
     background-color: #0056b3;
 }
+
+.create-invoice-error, .create-invoice-payment-request {
+    margin: 10px 0;
+    color:white;
+    max-width: 480px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

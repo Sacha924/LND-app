@@ -26,3 +26,12 @@
 .send-payment-form button:hover {
     background-color: #218838;
 }
+
+.send-payment-error, .send-payment-response{
+    margin: 10px 0;
+    color:white;
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
