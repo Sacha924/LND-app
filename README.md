@@ -14,6 +14,9 @@
 
 ## Getting Started
 1. **Initial Setup**: Ensure `bitcoind` and `lnd` are running on your computer. Do not unlock your wallet at this stage.
+
+<img src="img/UnlockWallet.JPG" alt="UnlockWallet Page" width="500"/>
+
 2. **Unlock Your Wallet**: Unlock your wallet from the application by entering your wallet password. Post this, you'll be redirected to the home page.
 
    ![Home Page](img/Accueil.JPG)
