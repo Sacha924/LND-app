@@ -6,6 +6,9 @@
 ![Forks](https://img.shields.io/github/forks/Sacha924/LND-app)
 ![Stars](https://img.shields.io/github/stars/Sacha924/LND-app)
 
+This application provides a user-friendly graphical interface for interacting with the Lightning Network Daemon (LND), eliminating the need for command-line operations. It simplifies the process of managing LND functionalities, allowing users to easily perform tasks such as unlocking wallets, opening and closing channels, and handling transactions directly through the interface, thereby making the LND more accessible to non-technical users
+
+
 ## Prerequisites
 - Ensure you have `bitcoind` and `lnd` installed on your machine.
 - Configure them to run on signet.
